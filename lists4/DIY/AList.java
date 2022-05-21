@@ -5,6 +5,7 @@
 public class AList {
     /** Creates an empty list. */
     public AList() {
+
     }
 
     /** Inserts X into the back of the list. */
