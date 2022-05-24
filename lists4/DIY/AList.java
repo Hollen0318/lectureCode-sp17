@@ -61,15 +61,21 @@ public class AList {
     }
 
     public static void reverse(int[] arr) {
-//        To destructively reverse the array list
-
+        for (int i = 0; i < arr.length/2; i += 1) {
+            int mid = arr[i];
+            arr[i] = arr[arr.length-i-1];
+            arr[arr.length-1-i] = mid;
+        }
     }
+
+
 
     public static void main(String[] args) {
         int[] a = new int[] {5,4,6,1,2};
-        int[] b = AList.insert(a,0,1);
-        int[] c = AList.insert(a,0,0);
-        int[] d = AList.insert(a,0,a.length);
-        int[] e = AList.insert(a,0,a.length-1);
+//        int[] b = AList.insert(a,0,1);
+//        int[] c = AList.insert(a,0,0);
+//        int[] d = AList.insert(a,0,a.length);
+//        int[] e = AList.insert(a,0,a.length-1);
+        AList.reverse(a);
     }
 } 
