@@ -1,5 +1,5 @@
 public class sort {
-    public void SortArray (int[] a) {
+    public static void SortArray (int[] a) {
         int position = 0;
         if ( a.length == 1) {
             return;
@@ -14,10 +14,10 @@ public class sort {
         }
     }
 
-    public int[] minInArray (int[] a, int start) {
+    public static int[] minInArray (int[] a, int start) {
         int[] arr = new int[2];
         int min = a[start];
-        int index = 0;
+        int index = start;
         for (int i = start+1; i < a.length; i += 1){
             if (a[i] < min) {
                 min = a[i];
@@ -31,7 +31,7 @@ public class sort {
 
     public static void main(String[] args) {
         int[] a = new int[] {2,3,4,5,10,1,0,-1,-4};
-        SortArray(a);
+        sort.SortArray(a);
     }
 
 }
