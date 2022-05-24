@@ -43,4 +43,33 @@ public class AList {
         numbers = handicapp;
         return last;
     }
+
+    public static int[] insert(int[] arr, int item, int position) {
+        int[] newArr = new int[arr.length+1];
+        if ( position==0 ) {
+            System.arraycopy(arr,0,newArr,1,arr.length);
+            newArr[0] = item;
+        } else if (position >= arr.length) {
+            System.arraycopy(arr,0,newArr,0,arr.length);
+            newArr[arr.length] = item;
+        }else{
+            System.arraycopy(arr,0,newArr,0,position);
+            newArr[position] = item;
+            System.arraycopy(arr,position,newArr,position+1,arr.length-position);
+        }
+        return newArr;
+    }
+
+    public static void reverse(int[] arr) {
+//        To destructively reverse the array list
+
+    }
+
+    public static void main(String[] args) {
+        int[] a = new int[] {5,4,6,1,2};
+        int[] b = AList.insert(a,0,1);
+        int[] c = AList.insert(a,0,0);
+        int[] d = AList.insert(a,0,a.length);
+        int[] e = AList.insert(a,0,a.length-1);
+    }
 } 
