@@ -68,7 +68,22 @@ public class AList {
         }
     }
 
-
+    public static int[] replicate (int[] arr ) {
+        int sum = 0;
+        int [] pile;
+        for (int i = 0; i < arr.length; i += 1) {
+            sum += arr[i];
+        }
+        pile = new int[sum];
+        int size = 0;
+        for (int j = 0; j < arr.length; j += 1){
+            for (int k = 0; k < arr[j]; k += 1){
+                pile[size] = arr[j];
+                size += 1;
+            }
+        }
+        return pile;
+    }
 
     public static void main(String[] args) {
         int[] a = new int[] {5,4,6,1,2};
@@ -76,6 +91,7 @@ public class AList {
 //        int[] c = AList.insert(a,0,0);
 //        int[] d = AList.insert(a,0,a.length);
 //        int[] e = AList.insert(a,0,a.length-1);
-        AList.reverse(a);
+
+        int[] b = AList.replicate(a);
     }
 } 
