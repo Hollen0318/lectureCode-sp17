@@ -1,6 +1,4 @@
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
+import java.util.*;
 
 public class ArraySet<T> implements Iterable<T>{
     private T[] items;
@@ -53,14 +51,59 @@ public class ArraySet<T> implements Iterable<T>{
             return returnItem;
         }
     }
+//    @Override
+//    public String toString() {
+////        String returnString = "{";
+////        for (int i = 0; i < this.size - 1; i += 1) {
+////            returnString += items[i].toString();
+////            returnString += ", ";
+////        }
+////        returnString += items[this.size - 1];
+////        returnString += "}";
+////        return returnString;
+//
+////        The string concentation is very slow
+////        So we use the stringbuilder
+//        StringBuilder returnSB = new StringBuilder("{");
+//        for (int i = 0; i < size - 1; i += 1) {
+//            returnSB.append(items[i].toString());
+//            returnSB.append(", ");
+//        }
+//        returnSB.append(items[this.size - 1]);
+//        returnSB.append("}");
+//        return returnSB.toString();
+//    }
     @Override
     public String toString() {
-        return "Fuck you";
+        List<String> listOfItems = new ArrayList<>();
+        for (T x : this) {
+            listOfItems.add(x.toString());
+        }
+        return "{" + String.join(",", listOfItems) + "}";
+//        This string add is not efficient
     }
     public Iterator<T> iterator() {
         return new ArraySetIterator();
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {return false;}
+        if (this == other) {return true;}
+        if (other.getClass() != this.getClass()) {
+            return false;
+        }
+        ArraySet<T> o = (ArraySet<T>) other;
+        if (o.size() != this.size()) {
+            return false;
+        }
+        for (T item: this) {
+            if (!o.contains(item)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static void main(String[] args) {
         ArraySet<String> s = new ArraySet<>();
@@ -68,32 +111,15 @@ public class ArraySet<T> implements Iterable<T>{
         s.add("fish");
         s.add("house");
         s.add("fish");
-//        System.out.println(s.contains("horse"));
-//        System.out.println(s.size());
-
-        Set<String> s2 = new HashSet<>();
-        s2.add(null);
-        s2.add("hollen");
-        s2.add("sodda");
-        s2.add("britain");
-        s2.add("usa");
-//
-//        Iterator<String> seer = s2.iterator();
-//        while (seer.hasNext()) {
-//            String string = seer.next();
-//            System.out.println(string);
-//        }
-
-//        Iterator<String> seer2 = s.iterator();
-//        while (seer2.hasNext()) {
-//            String string2 = seer2.next();
-//            System.out.println(string2);
-//        }
-
-//        for (String i : s) {
-//            System.out.println(i);
-//        }
-//        System.out.println(s2.contains(null));
         System.out.println(s);
+        ArraySet<String> s2 = new ArraySet<>();
+        s2.add("horse");
+        s2.add("fish");
+        s2.add("house");
+        s2.add("fish");
+
+        System.out.println(s.equals(s2));
+        System.out.println(s.equals(null));
+        System.out.println(s.equals("null"));
     }
 }
